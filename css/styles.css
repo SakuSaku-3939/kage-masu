@@ -48,18 +48,14 @@ body {
   background-color: #fff;
 }
 
-@media screen and (max-width: 320px) {
-  .content p {
-    font-size: 10px;
-  }
-}
+
 
 .container {
   background-color: #f7f9fc;
   position: relative;
   max-width: 400px;
   margin: 0 auto;
-  padding: 1em calc(1.5em + 9px);
+  padding: 1em calc(1em + 5px);
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
   color: #333;
@@ -134,4 +130,20 @@ button:active {
 #notice span {
   color: red;
   font-size: 16px;
+}
+
+.explanation {
+  font-size: 13px;
+  padding: 0;
+}
+
+@media screen and (max-width: 375px) {
+  .content p {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .content p {
+    font-size: 10px;
+  }
 }
