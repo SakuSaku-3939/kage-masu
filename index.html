@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カゲマススタミナ計算</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div><b>スタミナ計算</b></div>
+
+    <section class="content">
+      <div>
+        <p>目的のスタミナ</p>
+        <input type="number" id="targetStamina" value="0" max="999">
+      </div>
+      <div>
+        <p>現在のスタミナ</p>
+        <input type="number" id="currentStamina" value="0" max="150">
+      </div>
+    </section>
+
+    <section class="content">
+      <div>
+        <p>回復(石)</p>
+        <select id="selectStone">
+          <option value="0" selected>0</option>
+        </select>
+      </div>
+      <div>
+        <p>回復(サンド)</p>
+        <select id="selectSandwich">
+          <option value="0" selected>0</option>
+        </select>
+      </div>
+      <div>
+        <p>回復(バーガー)</p>
+        <select id="selectBurger">
+          <option value="0" selected>0</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="content">
+      <div>
+        <p>回復(その他)</p>
+        <input type="number" id="otherRecovery" value="0">
+      </div>
+    </section>
+
+    <section class="content">
+      <div>
+        <p>現在時刻</p>
+        <input type="datetime-local" id="currentTime" class="current-time" disabled>
+      </div>
+      <button class="time-button" onclick="updateCurrentTime()">更新</button>
+    </section>
+
+    <div class="calculation-area">
+      <button onclick="startCalculation()">計算開始</button>
+    </div>
+
+    <div id="notice"></div>
+  </div>
+</body>
+</html>
