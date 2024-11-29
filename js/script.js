@@ -79,7 +79,6 @@ const checkInputValue = (input) => {
   }
 }
 
-
 (window.onload = () => {
   const selectStone = document.getElementById('selectStone');
   const selectSandwich = document.getElementById('selectSandwich');
