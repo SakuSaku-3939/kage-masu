@@ -32,14 +32,24 @@ const updateCurrentTime = () => {
   currentTime.value = `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
+const ensureNumericValue = (input) => {
+  const value = input.value;
+  console.log(value);
+  if (isNaN(value) || value.trim() === "") {
+    return 0;
+  }
+
+  return Number(value);
+}
+
 const startCalculation = () => {
-  const taeget = document.getElementById('targetStamina').valueAsNumber;
-  const current = document.getElementById('currentStamina').valueAsNumber;
-  const stone = document.getElementById('selectStone').value;
-  const sandwic = document.getElementById('selectSandwich').value;
-  const burger = document.getElementById('selectBurger').value;
-  const other = document.getElementById('otherRecovery').valueAsNumber;
-  const currentTime = document.getElementById('currentTime').value;
+  const taeget = ensureNumericValue(document.getElementById('targetStamina'));
+  const current = ensureNumericValue(document.getElementById('currentStamina'));
+  const stone = ensureNumericValue(document.getElementById('selectStone'));
+  const sandwic = ensureNumericValue(document.getElementById('selectSandwich'));
+  const burger = ensureNumericValue(document.getElementById('selectBurger'));
+  const other = ensureNumericValue(document.getElementById('otherRecovery'));
+  const currentTime = document.getElementById('currentTime').value
   const notice = document.getElementById('notice');
 
   let staminaOffset = taeget - (
@@ -69,6 +79,7 @@ const startCalculation = () => {
   const day = String(currentDate.getDate()).padStart(2, '0');
   const hours = String(currentDate.getHours()).padStart(2, '0');
   const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+  
   notice.innerHTML = `<span> ${timeOffset}分後</span><b>(${year}/${month}/${day} ${hours}:${minutes})</b> の <span> ${current + diff } </span>の時にスタミナの回復をしてください。`;
 }
 
