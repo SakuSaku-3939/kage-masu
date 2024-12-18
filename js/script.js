@@ -79,8 +79,8 @@ const startCalculation = () => {
   const day = String(currentDate.getDate()).padStart(2, '0');
   const hours = String(currentDate.getHours()).padStart(2, '0');
   const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-  
-  notice.innerHTML = `<span> ${timeOffset}分後</span><b>(${year}/${month}/${day} ${hours}:${minutes})</b> の <span> ${current + diff } </span>の時にスタミナの回復をしてください。`;
+
+  notice.innerHTML = `<span> ${timeOffset}分後</span><b>(${year}/${month}/${day} ${hours}:${minutes})</b> の <span> ${current + diff} </span>の時にスタミナの回復をしてください。`;
 }
 
 const checkInputValue = (input) => {
@@ -88,6 +88,21 @@ const checkInputValue = (input) => {
   if (parseInt(input.value, 10) > max) {
     input.value = max;
   }
+}
+
+const captureHTML = () => {
+  const element = document.getElementById('captureArea');
+  const now = new Date();
+
+  // 月日と時間を連続形式で生成 (MMDD_HHMMSS)
+  const timestamp = `${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}${String(now.getSeconds()).padStart(2, '0')}`;
+  
+  html2canvas(element).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `stamina_capture_${timestamp}.png`;;
+    link.href = canvas.toDataURL();
+    link.click();
+  })
 }
 
 (window.onload = () => {

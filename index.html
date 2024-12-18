@@ -7,65 +7,70 @@
   <title>カゲマススタミナ計算</title>
   <link rel="stylesheet" href="./css/styles.css">
   <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas"></script>
 </head>
 
 <body>
-  <div class="container">
-    <div><b>スタミナ計算</b></div>
-    <p class="explanation">現在のスタミナは150までを前提として作成しています。</p>
+  <div id="captureArea">
+    <div class="container">
+      <div><b>スタミナ計算</b></div>
+      <p class="explanation">現在のスタミナは150までを前提として作成しています。</p>
 
-    <section class="content">
-      <div>
-        <p>目的のスタミナ</p>
-        <input type="number" id="targetStamina" value="0" max="999" onchange="checkInputValue(this)">
-      </div>
-      <div>
-        <p>現在のスタミナ</p>
-        <input type="number" id="currentStamina" value="0" max="150" onchange="checkInputValue(this)">
-      </div>
-    </section>
+      <section class="content">
+        <div>
+          <p>目的のスタミナ</p>
+          <input type="number" id="targetStamina" value="0" max="999" onchange="checkInputValue(this)">
+        </div>
+        <div>
+          <p>現在のスタミナ</p>
+          <input type="number" id="currentStamina" value="0" max="150" onchange="checkInputValue(this)">
+        </div>
+      </section>
 
-    <section class="content">
-      <div>
-        <p>回復(石)</p>
-        <select id="selectStone">
-          <option value="0" selected>0</option>
-        </select>
-      </div>
-      <div>
-        <p>回復(サンド)</p>
-        <select id="selectSandwich">
-          <option value="0" selected>0</option>
-        </select>
-      </div>
-      <div>
-        <p>回復(バーガー)</p>
-        <select id="selectBurger">
-          <option value="0" selected>0</option>
-        </select>
-      </div>
-    </section>
+      <section class="content">
+        <div>
+          <p>回復(石)</p>
+          <select id="selectStone">
+            <option value="0" selected>0</option>
+          </select>
+        </div>
+        <div>
+          <p>回復(サンド)</p>
+          <select id="selectSandwich">
+            <option value="0" selected>0</option>
+          </select>
+        </div>
+        <div>
+          <p>回復(バーガー)</p>
+          <select id="selectBurger">
+            <option value="0" selected>0</option>
+          </select>
+        </div>
+      </section>
 
-    <section class="content">
-      <div>
-        <p>回復(その他)</p>
-        <input type="number" id="otherRecovery" value="0">
-      </div>
-    </section>
+      <section class="content">
+        <div>
+          <p>回復(その他)</p>
+          <input type="number" id="otherRecovery" value="0">
+        </div>
+      </section>
 
-    <section class="content">
-      <div>
-        <p>現在時刻</p>
-        <input type="datetime-local" id="currentTime" class="current-time" disabled>
-      </div>
-      <button class="time-button" onclick="updateCurrentTime()">更新</button>
-    </section>
+      <section class="content">
+        <div>
+          <p>現在時刻</p>
+          <input type="datetime-local" id="currentTime" class="current-time" disabled>
+        </div>
+        <button class="time-button" onclick="updateCurrentTime()">更新</button>
+      </section>
 
-    <div class="calculation-area">
-      <button onclick="startCalculation()">計算開始</button>
+      <div class="calculation-area">
+        <button onclick="startCalculation()">計算開始</button>
+        <button onclick="captureHTML()">画像作成</button>
+      </div>
+
+      <div id="notice"></div>
     </div>
-
-    <div id="notice"></div>
   </div>
 </body>
+
 </html>
